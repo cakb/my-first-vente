@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="formu">
+{% if product %}Votre commande a bien été envoyé !{% endif %}
+
+<form action="{% url "commerce:commande" product_id=product_id  %}" method="post">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <input type="submit" value="Envoyer" />
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Rayons</p>
+            </div>
+
+            <div class="col-md-9">
+                <p class="lead">{{ product.name }}<a href="{% url 'commerce:commande' product.id %}" class="pull-right btn btn-success"><i class="fa fa-shopping-cart"></i> Commander pour <strong>{{ product.price}}</strong> FCFA</a></p>
+
+                <p>{{ product.short_desc }}</p>
+
+                {% if pictures %}
+                    <div class="row carousel-holder">
+                        <div class="col-md-12">
+                            <div id="carousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    {% for picture in pictures %}
+                                        <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
+                                    {% endfor %}
+                                </ol>
+                                <div class="carousel-inner">
+                                    {% for picture in pictures %}
+                                        <div class="item{% if forloop.counter0 == 0 %} active{% endif %}">
+                                            <img class="slide-image" src="/media/{{ picture.product_photo }}" />
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <a class="left carousel-control" href="#carousel" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left"></span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <p>{{ product.long_desc }}</p>
+
+
+
+
+            </div>
+
+        </div>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+body > .container {
+    padding-top: 80px;
+}
+
+.navbar {
+    background-color: #deffd5;
+}
+@media all and(max-width:1024px)
+{
+    .navbar
+    {
+        width:auto;
+        margin:auto;
+    }
+}
+
+.nav>li>a:hover, .nav>li>a:focus {
+    background-color: yellowgreen;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+    background-color: yellowgreen;
+    border-color: yellowgreen;
+}
+
+
+a:hover, a:focus {
+    color: darkgreen;
+}
+
+a{
+    color: forestgreen;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+@media all and(max_width:1024px)
+{
+   .thumbnail img {
+    width:auto;
+   }
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.divider{
+    height: 250px;
+    margin-left: 32px;
+    text-align: center;
+    border-left : 4px solid #deffd5;
+}
+
+.word{
+    background-color: #deffd5;
+    padding: 20px;
+    margin-left: -35px;
+    position: relative;
+    top: 100px;
+    border-radius: 50px;
+}
+
+/**
+ * Panier
+ **/
+
+.stepwizard-step p {
+    margin-top: 10px;
+}
+
+.process-row {
+    display: table-row;
+}
+
+.process {
+    display: table;
+    width: 100%;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.process-step button[disabled] {
+    opacity: 1 !important;
+    filter: alpha(opacity=100) !important;
+}
+
+.process-row:before {
+    top: 30px;
+    bottom: 0;
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    z-order: 0;
+
+}
+
+.process-step {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+}
+
+.process-step p {
+    margin-top:10px;
+
+}
+
+.btn-circle {
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 5px;
+}
+
+.thumbnail.shipping{
+    padding-left: 15px;
+}
+.formu{
+    width:100%;
+    height:auto;
+    float:center;
+
+}
+@media all and(max-width:1024)
+{
+    .formu
+    {
+        flex:display;
+        width:auto;
+        height:auto;
+        flex-direction:column;
+    }
+}

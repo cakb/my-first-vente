@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<hr>
+<h1 class="intro-text text-center">{{ product.name }}</h1>
+<hr class="detail-separator">
+<div class="col-md-6">
+  <img src="{{ product.image }}" alt="{{ product.short_desc }}" class="img-responsive">
+</div>
+  <h2 class="text-center artist_name">Commander {{ product.name }}</h2>
+  <p style="margin-bottom: 20px;">votre produit{{ product.name }} vous sera livré à domicile </p>
+  <form class="form-inline" action="{% url 'commerce:detail' product_id=product_id %}" method="post">
+    {% csrf_token %}
+    <div class="form-group {% if form.name.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.name.id_for_label }}" class="control-label">Nom</label>
+      {{ form.name }}
+    </div>
+        <div class="form-group {% if form.city.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.city.id_for_label }}" class="control-label">City</label>
+      {{ form.city }}
+    </div>
+        <div class="form-group {% if form.quarter.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.quarter.id_for_label }}" class="control-label">Quartier</label>
+      {{ form.quarter }}
+    </div>
+        <div class="form-group {% if form.street.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.street.id_for_label }}" class="control-label">Rue</label>
+      {{ form.street }}
+    </div>
+        <div class="form-group {% if form.door.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.door.id_for_label }}" class="control-label">Numéro de porte</label>
+      {{ form.door }}
+    </div>
+        <div class="form-group {% if form.phone.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.phone.id_for_label }}" class="control-label">Numéro de téléphone</label>
+      {{ form.phone }}
+    </div>
+    <div class="form-group {% if form.email.errors %}has-warning has-feedback{% endif %}">
+      <label for="{{ form.email.id_for_label }}" class="control-label">E-mail</label>
+      {{ form.email }}
+    </div>
+    <input type="hidden" class="hidden" value="{{ product_id }}" name="product_id">
+
+    <button type="submit" class="btn btn-success">Commander</button>
+  </form>
+  {% if errors %}
+    <div>
+      {% for key, error in errors %}
+        {% autoescape off %}
+          {{ error }}
+        {% endautoescape %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+
+</div>
+
+
+{% endblock %}

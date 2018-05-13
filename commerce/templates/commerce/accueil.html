@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+    <div class="row">
+
+            <div class="col-md-3">
+                <p class="lead">Rayons</p>       
+            </div>
+
+            <div class="col-md-9">
+                {% if carousel %}
+                <p class="lead">À la une</p>
+                <div class="row carousel-holder">
+                    <div class="col-md-12">
+                        <div id="carousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                {% for picture in carousel %}
+                                    <li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" class=""></li>
+                                {% endfor %}
+                            </ol>
+                            <div class="carousel-inner">
+                                {% for picture in carousel %}
+                                    <div class="item{% if forloop.counter0 == 0 %} active{% endif %}">
+                                        <img class="slide-image" src="/media/{{ picture.product_photo }}" />
+                                        <div class="carousel-caption">
+                                            <h3><a style="color:white" href="{% url 'commerce:display_product' picture.product.id %}">{{ picture.product.name }}</a></h3>
+                                            <p>{{ picture.product.short_desc }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <a class="left carousel-control" href="#carousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <p class="lead">Derniers produits</p>
+                <div class="row">
+
+                    {% for product in products %}
+                        <div class="col-sm-4 col-lg-4 col-md-4">
+                            <div class="thumbnail">
+                                {% if product.image %}
+                                   <a href="{% url 'commerce:display_product' product.id %}"> <img src="/media/{{ product.image}}" alt=""></a>
+                                {% else %}
+                                    <img class="slide-image" src="/media/"http://placehold.it/320x150" alt="">
+                                {% endif %}
+                                <div class="caption">
+                                    <h4 class="pull-right">{{ product.price }} FCFA</h4>
+                                    <h4><a href="{% url 'commerce:display_product' product.id %}">{{ product.name }}</a>
+                                    </h4>
+                                    <p>{{ product.short_desc }}</p>
+                                </div>
+                                <!--
+                                <div class="ratings">
+                                    <p class="pull-right">18 reviews</p>
+                                    <p>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star"></span>
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    </p>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <h4><a href="#">Vous en voulez plus ?</a>
+                        </h4>
+                        <p>N'hésitez pas à parcourir nos différents rayons par l'intermédiaire de la colonne de droite. Vous-y découvrirez de nombreuses pépites !</p>
+                        <p>À vos paniers !</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+{% endblock %}
